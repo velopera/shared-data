@@ -1,0 +1,28 @@
+{
+  "name": "shared-data",
+  "version": "1.0.0",
+  "description": "IoT Shared Data Package",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/velopera/shared-data.git"
+  },
+  "author": "Kadir Güzel",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/velopera/shared-data/issues"
+  },
+  "homepage": "https://github.com/velopera/shared-data#readme",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
