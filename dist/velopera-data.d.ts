@@ -24,3 +24,11 @@ export interface LoginMsg {
     fw?: string;
     iccid?: string;
 }
+export interface statusMsg {
+    speed?: number;
+    gear?: number;
+    aku_voltage?: string;
+    temperature?: string;
+    humidity?: string;
+    compass?: Array<number>;
+}
