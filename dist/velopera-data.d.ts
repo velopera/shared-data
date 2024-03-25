@@ -24,7 +24,7 @@ export interface LoginMsg {
     fw?: string;
     iccid?: string;
 }
-export interface statusMsg {
+export interface StatusMsg {
     speed?: number;
     gear?: number;
     aku_voltage?: string;
