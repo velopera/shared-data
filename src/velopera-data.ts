@@ -13,7 +13,7 @@ export interface ParsedLoginData {
 }
 
 export interface LoginMsg {
-    status?: string;
+    networkStatus?: string;
     rsrp?: number;
     mcc?: string;
     mnc?: string;
