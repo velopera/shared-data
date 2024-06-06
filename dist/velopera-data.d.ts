@@ -27,8 +27,10 @@ export interface LoginMsg {
 export interface StatusMsg {
     speed?: number;
     gear?: number;
-    aku_voltage?: string;
-    temperature?: string;
-    humidity?: string;
-    compass?: Array<number>;
+    aku_voltage?: number;
+    temperature?: number;
+    humidity?: number;
+    comp_x?: number;
+    comp_y?: number;
+    comp_z?: number;
 }
