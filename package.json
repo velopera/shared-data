@@ -22,7 +22,12 @@
     "url": "https://github.com/velopera/shared-data/issues"
   },
   "homepage": "https://github.com/velopera/shared-data#readme",
+  "dependencies": {
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  },
   "devDependencies": {
+    "@types/node": "^20.14.0",
     "typescript": "^5.3.3"
   }
 }
