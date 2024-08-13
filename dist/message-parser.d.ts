@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { ParsedLoginData } from "./velopera-data";
 export declare abstract class MessageParser {
     imei: string;
