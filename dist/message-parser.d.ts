@@ -9,5 +9,6 @@ export declare abstract class MessageParser {
     private handleLoginPayload;
     protected parseLoginMessage(payload: Buffer): ParsedLoginData;
     private parseHexNumber;
-    protected abstract handleParsedData(data: any): void;
+    protected abstract handleParsedStatus(data: any): void;
+    protected abstract handleParsedLogin(data: any): void;
 }

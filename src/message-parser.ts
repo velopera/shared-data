@@ -44,7 +44,7 @@ export abstract class MessageParser {
         `||| Influxing Status Data ||| \n${JSON.stringify(statusData)}`
       );
 
-      this.handleParsedData(statusData);
+      this.handleParsedStatus(statusData);
     } catch (error) {
       logger.error(`getStatusPayload ${error}`);
     }
@@ -52,7 +52,7 @@ export abstract class MessageParser {
 
   private handleLoginPayload(payload: Buffer): void {
     const loginData = this.parseLoginMessage(payload);
-    this.handleParsedData(loginData);
+    this.handleParsedLogin(loginData);
   }
 
   protected parseLoginMessage(payload: Buffer): ParsedLoginData {
@@ -97,5 +97,6 @@ export abstract class MessageParser {
     return value ? parseInt(value, 16) : undefined;
   }
 
-  protected abstract handleParsedData(data: any): void;
+  protected abstract handleParsedStatus(data: any): void;
+  protected abstract handleParsedLogin(data: any): void;
 }

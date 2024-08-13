@@ -49,7 +49,7 @@ class MessageParser {
             statusData.speed = msg.speed;
             statusData.temperature = msg.temperature;
             logging_1.logger.debug(`||| Influxing Status Data ||| \n${JSON.stringify(statusData)}`);
-            this.handleParsedData(statusData);
+            this.handleParsedStatus(statusData);
         }
         catch (error) {
             logging_1.logger.error(`getStatusPayload ${error}`);
@@ -57,7 +57,7 @@ class MessageParser {
     }
     handleLoginPayload(payload) {
         const loginData = this.parseLoginMessage(payload);
-        this.handleParsedData(loginData);
+        this.handleParsedLogin(loginData);
     }
     parseLoginMessage(payload) {
         let msg;
