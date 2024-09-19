@@ -44,7 +44,20 @@ class MessageParser {
             logging_1.logger.debug(`||| GPS Payload Parsed ||| \n${payload.toString("utf-8")}`);
             const msg = JSON.parse(payload.toString("utf-8"));
             let gpsData = {};
-            gpsData = msg;
+            gpsData.latitude = msg.Latitude;
+            gpsData.longtitude = msg.Longtitude;
+            gpsData.altitude = msg.Altitude;
+            gpsData.accuracy = msg.Accuracy;
+            gpsData.speed = msg.Speed;
+            gpsData.speedAccuracy = msg.SpeedAccuracy;
+            gpsData.heading = msg.Heading;
+            gpsData.date = msg.Date;
+            gpsData.time = msg.Time;
+            gpsData.pdop = msg.Pdop;
+            gpsData.hdop = msg.Hdop;
+            gpsData.vdop = msg.Vdop;
+            gpsData.tdop = msg.Tdop;
+            gpsData.measId = msg.MeasId;
             logging_1.logger.debug(`||| Influxing GPS Data ||| \n${JSON.stringify(gpsData)}`);
             this.handleParsedGps(gpsData);
         }

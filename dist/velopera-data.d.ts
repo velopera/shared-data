@@ -35,18 +35,18 @@ export interface StatusMsg {
     comp_z?: number;
 }
 export interface GpsMsg {
-    Latitude?: number;
-    Longtitude?: number;
-    Altitude?: number;
-    Accuracy?: number;
-    Speed?: number;
-    SpeedAccuracy?: number;
-    Heading?: number;
-    Date?: string;
-    Time?: string;
-    Pdop?: number;
-    Hdop?: number;
-    Vdop?: number;
-    Tdop?: number;
-    MeasId?: number;
+    latitude?: number;
+    longtitude?: number;
+    altitude?: number;
+    accuracy?: number;
+    speed?: number;
+    speedAccuracy?: number;
+    heading?: number;
+    date?: string;
+    time?: string;
+    pdop?: number;
+    hdop?: number;
+    vdop?: number;
+    tdop?: number;
+    measId?: number;
 }
