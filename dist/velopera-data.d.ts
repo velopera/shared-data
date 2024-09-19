@@ -36,7 +36,7 @@ export interface StatusMsg {
 }
 export interface GpsMsg {
     latitude?: number;
-    longtitude?: number;
+    longitude?: number;
     altitude?: number;
     accuracy?: number;
     speed?: number;

@@ -34,7 +34,7 @@ export abstract class MessageParser {
       let gpsData: GpsMsg = {};
 
       gpsData.latitude = msg.Latitude;
-      gpsData.longtitude = msg.Longtitude;
+      gpsData.longitude = msg.Longitude;
       gpsData.altitude = msg.Altitude;
       gpsData.accuracy = msg.Accuracy;
       gpsData.speed = msg.Speed;
