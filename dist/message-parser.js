@@ -51,8 +51,8 @@ class MessageParser {
             gpsData.speed = msg.Speed;
             gpsData.speedAccuracy = msg.SpeedAccuracy;
             gpsData.heading = msg.Heading;
-            gpsData.date = msg.Date;
-            gpsData.time = msg.Time;
+            //gpsData.date = msg.Date;
+            //gpsData.time = msg.Time;
             gpsData.pdop = msg.PDOP;
             gpsData.hdop = msg.HDOP;
             gpsData.vdop = msg.VDOP;

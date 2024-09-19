@@ -45,8 +45,8 @@ export interface GpsMsg {
   speed?: number;
   speedAccuracy?: number;
   heading?: number;
-  date?: string;
-  time?: string;
+  //date?: string;
+  //time?: string;
   pdop?: number;
   hdop?: number;
   vdop?: number;
