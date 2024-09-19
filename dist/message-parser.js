@@ -29,11 +29,28 @@ class MessageParser {
                 this.handleLoginPayload(payload);
                 logging_1.logger.debug(`Handled from ${topic}`);
             }
+            else if (messageType === "gps") {
+                this.handleGpsPayload(payload);
+                logging_1.logger.debug(`Handled from ${topic}`);
+            }
             else {
                 // TODO: Procedures for other message types
                 logging_1.logger.warn(`unknown message type from topic: ${topic}`);
             }
         });
+    }
+    handleGpsPayload(payload) {
+        try {
+            logging_1.logger.debug(`||| GPS Payload Parsed ||| \n${payload.toString("utf-8")}`);
+            const msg = JSON.parse(payload.toString("utf-8"));
+            let gpsData = {};
+            gpsData = msg;
+            logging_1.logger.debug(`||| Influxing GPS Data ||| \n${JSON.stringify(gpsData)}`);
+            this.handleParsedGps(gpsData);
+        }
+        catch (error) {
+            logging_1.logger.error(`getGpsPayload ${error}`);
+        }
     }
     handleStatusPayload(payload) {
         try {
