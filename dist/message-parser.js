@@ -53,11 +53,11 @@ class MessageParser {
             gpsData.heading = msg.Heading;
             gpsData.date = msg.Date;
             gpsData.time = msg.Time;
-            gpsData.pdop = msg.Pdop;
-            gpsData.hdop = msg.Hdop;
-            gpsData.vdop = msg.Vdop;
-            gpsData.tdop = msg.Tdop;
-            gpsData.measId = msg.MeasId;
+            gpsData.pdop = msg.PDOP;
+            gpsData.hdop = msg.HDOP;
+            gpsData.vdop = msg.VDOP;
+            gpsData.tdop = msg.TDOP;
+            gpsData.measId = msg.measId;
             logging_1.logger.debug(`||| Influxing GPS Data ||| \n${JSON.stringify(gpsData)}`);
             this.handleParsedGps(gpsData);
         }
