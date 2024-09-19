@@ -36,3 +36,20 @@ export interface StatusMsg {
   comp_y?: number;
   comp_z?: number;
 }
+
+export interface GpsMsg {
+  Latitude?: number;
+  Longtitude?: number;
+  Altitude?: number;
+  Accuracy?: number;
+  Speed?: number;
+  SpeedAccuracy?: number;
+  Heading?: number;
+  Date?: string;
+  Time?: string;
+  Pdop?: number;
+  Hdop?: number;
+  Vdop?: number;
+  Tdop?: number;
+  MeasId?: number;
+}

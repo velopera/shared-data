@@ -1,10 +1,10 @@
 import { logger } from "./logging";
-import { LoginMsg, ParsedLoginData, StatusMsg } from "./velopera-data";
+import { GpsMsg, LoginMsg, ParsedLoginData, StatusMsg } from "./velopera-data";
 
 export abstract class MessageParser {
   status: ParsedLoginData | undefined;
 
-  constructor(public imei: string, public scId: string) {}
+  constructor(public imei: string, public scId: string) { }
 
   // Method to handle MQTT messages
   async handle(topic: string, payload: Buffer) {
@@ -16,12 +16,35 @@ export abstract class MessageParser {
     } else if (messageType === "login") {
       this.handleLoginPayload(payload);
       logger.debug(`Handled from ${topic}`);
+    } else if (messageType === "gps") {
+      this.handleGpsPayload(payload);
+      logger.debug(`Handled from ${topic}`);
     } else {
       // TODO: Procedures for other message types
       logger.warn(`unknown message type from topic: ${topic}`);
     }
   }
+  protected handleGpsPayload(payload: Buffer): void {
+    try {
+      logger.debug(
+        `||| GPS Payload Parsed ||| \n${payload.toString("utf-8")}`
+      );
+      const msg = JSON.parse(payload.toString("utf-8"));
 
+      let gpsData: GpsMsg = {};
+
+      gpsData = msg;
+
+
+      logger.debug(
+        `||| Influxing GPS Data ||| \n${JSON.stringify(gpsData)}`
+      );
+
+      this.handleParsedGps(gpsData);
+    } catch (error) {
+      logger.error(`getGpsPayload ${error}`);
+    }
+  }
   protected handleStatusPayload(payload: Buffer): void {
     try {
       logger.debug(
@@ -99,4 +122,5 @@ export abstract class MessageParser {
 
   protected abstract handleParsedStatus(data: any): void;
   protected abstract handleParsedLogin(data: any): void;
+  protected abstract handleParsedGps(data: any): void;
 }
