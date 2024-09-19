@@ -33,7 +33,20 @@ export abstract class MessageParser {
 
       let gpsData: GpsMsg = {};
 
-      gpsData = msg;
+      gpsData.latitude = msg.Latitude;
+      gpsData.longtitude = msg.Longtitude;
+      gpsData.altitude = msg.Altitude;
+      gpsData.accuracy = msg.Accuracy;
+      gpsData.speed = msg.Speed;
+      gpsData.speedAccuracy = msg.SpeedAccuracy;
+      gpsData.heading = msg.Heading;
+      gpsData.date = msg.Date;
+      gpsData.time = msg.Time;
+      gpsData.pdop = msg.Pdop;
+      gpsData.hdop = msg.Hdop;
+      gpsData.vdop = msg.Vdop;
+      gpsData.tdop = msg.Tdop;
+      gpsData.measId = msg.MeasId;
 
 
       logger.debug(
