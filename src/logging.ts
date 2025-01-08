@@ -6,7 +6,7 @@ import DailyRotateFile from "winston-daily-rotate-file";
 const logPath: string = "./logs";
 !fs.existsSync(logPath) && fs.mkdirSync(logPath);
 
-// Set a prefix for log files, default to 'scs_iot', can be overridden by environment variable
+// Set a prefix for log files, default to 'velopera', can be overridden by environment variable
 let prefix = "velopera";
 if (process.env.LOG_PREFIX) {
   prefix = process.env.LOG_PREFIX;
