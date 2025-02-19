@@ -48,11 +48,6 @@ export abstract class MessageParser {
       gpsData.tdop = msg.TDOP;
       gpsData.measId = msg.measId;
 
-
-      logger.debug(
-        `||| Influxing GPS Data ||| \n${JSON.stringify(gpsData)}`
-      );
-
       this.handleParsedGps(gpsData);
     } catch (error) {
       logger.error(`getGpsPayload ${error}`);
@@ -75,10 +70,6 @@ export abstract class MessageParser {
       statusData.humidity = msg.humidity;
       statusData.speed = msg.speed;
       statusData.temperature = msg.temperature;
-
-      logger.debug(
-        `||| Influxing Status Data ||| \n${JSON.stringify(statusData)}`
-      );
 
       this.handleParsedStatus(statusData);
     } catch (error) {
