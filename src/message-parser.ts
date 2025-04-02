@@ -9,26 +9,29 @@ export abstract class MessageParser {
   // Method to handle MQTT messages
   async handle(topic: string, payload: Buffer) {
     let messageType = topic.split("/")[2]; // "x"
+
     // Condition to listen which message received
     if (messageType === "status") {
       this.handleStatusPayload(payload);
       logger.debug(`Handled from ${topic}`);
-    } else if (messageType === "login") {
+      return;
+    }
+
+    if (messageType === "login") {
       this.handleLoginPayload(payload);
       logger.debug(`Handled from ${topic}`);
-    } else if (messageType === "gps") {
+      return;
+    }
+
+    if (messageType === "gps") {
       this.handleGpsPayload(payload);
       logger.debug(`Handled from ${topic}`);
-    } else {
-      // TODO: Procedures for other message types
-      logger.warn(`unknown message type from topic: ${topic}`);
+      return;
     }
   }
   protected handleGpsPayload(payload: Buffer): void {
     try {
-      logger.debug(
-        `||| GPS Payload Parsed ||| \n${payload.toString("utf-8")}`
-      );
+      logger.debug(`||| GPS Payload Parsed ||| \n${payload.toString("utf-8")}`);
       const msg = JSON.parse(payload.toString("utf-8"));
 
       let gpsData: GpsMsg = {};
@@ -40,8 +43,6 @@ export abstract class MessageParser {
       gpsData.speed = msg.Speed;
       gpsData.speedAccuracy = msg.SpeedAccuracy;
       gpsData.heading = msg.Heading;
-      //gpsData.date = msg.Date;
-      //gpsData.time = msg.Time;
       gpsData.pdop = msg.PDOP;
       gpsData.hdop = msg.HDOP;
       gpsData.vdop = msg.VDOP;
@@ -55,9 +56,7 @@ export abstract class MessageParser {
   }
   protected handleStatusPayload(payload: Buffer): void {
     try {
-      logger.debug(
-        `||| Status Payload Parsed ||| \n${payload.toString("utf-8")}`
-      );
+      logger.debug(`||| Status Payload Parsed ||| \n${payload.toString("utf-8")}`);
       const msg = JSON.parse(payload.toString("utf-8"));
 
       let statusData: StatusMsg = {};
@@ -86,9 +85,7 @@ export abstract class MessageParser {
     let msg: LoginMsg;
 
     try {
-      logger.debug(
-        `||| Login Payload Parsed ||| \n${payload.toString("utf-8")}`
-      );
+      logger.debug(`||| Login Payload Parsed ||| \n${payload.toString("utf-8")}`);
       msg = JSON.parse(payload.toString("utf-8"));
     } catch (error) {
       logger.error(`error parseLoginMessage ${error}`);

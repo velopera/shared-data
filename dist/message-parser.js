@@ -24,18 +24,17 @@ class MessageParser {
             if (messageType === "status") {
                 this.handleStatusPayload(payload);
                 logging_1.logger.debug(`Handled from ${topic}`);
+                return;
             }
-            else if (messageType === "login") {
+            if (messageType === "login") {
                 this.handleLoginPayload(payload);
                 logging_1.logger.debug(`Handled from ${topic}`);
+                return;
             }
-            else if (messageType === "gps") {
+            if (messageType === "gps") {
                 this.handleGpsPayload(payload);
                 logging_1.logger.debug(`Handled from ${topic}`);
-            }
-            else {
-                // TODO: Procedures for other message types
-                logging_1.logger.warn(`unknown message type from topic: ${topic}`);
+                return;
             }
         });
     }
@@ -51,8 +50,6 @@ class MessageParser {
             gpsData.speed = msg.Speed;
             gpsData.speedAccuracy = msg.SpeedAccuracy;
             gpsData.heading = msg.Heading;
-            //gpsData.date = msg.Date;
-            //gpsData.time = msg.Time;
             gpsData.pdop = msg.PDOP;
             gpsData.hdop = msg.HDOP;
             gpsData.vdop = msg.VDOP;
